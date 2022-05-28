@@ -3,26 +3,52 @@ import Counter from "./Counter.jsx";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
-import { useState } from "react";
-//create your first component
+import { useState, useEffect } from "react";
+import { func } from "prop-types";
+//create your first componentrSec
 const Home = () => {
-	// const [time, setTime] = useState(0);
-	let numero;
-	const container = document.querySelector(".home-container");
-	const count = () => {
-		numero = 0;
+	const [counterUni, setcounterUni] = useState(0);
+	const [counterDec, setcounterDec] = useState(0);
+	const [counterCen, setcounterCen] = useState(0);
+	const [counterUniM, setcounterUniM] = useState(0);
+	const [counterDecM, setcounterDecM] = useState(0);
+	const [counterCenM, setcounterCenM] = useState(0);
+	useEffect(() => {
+		const setCero = (counter) => {
+			counter((prevcounter) =>
+				prevcounter == 9 ? (prevcounter = 0) : prevcounter + 1
+			);
+		};
 		setInterval(() => {
-			console.log(container);
-			numero = numero + 1;
-			console.log(numero + 1);
-			// return numero;
+			setCero(setcounterUni);
 		}, 1000);
-	};
-	// count();
+		setInterval(() => {
+			setCero(setcounterDec);
+		}, 10000);
+		setInterval(() => {
+			setCero(setcounterCen);
+		}, 100000);
+		setInterval(() => {
+			setCero(setcounterUniM);
+		}, 1000000);
+		setInterval(() => {
+			setCero(setcounterDecM);
+		}, 1000000);
+		setInterval(() => {
+			setCero(setcounterCenM);
+		}, 1000000);
+	}, []);
+
 	return (
 		<div className="home-container">
-			<Counter numero={count()} />
-			{/* <Counter numero={numero} /> */}
+			<Counter
+				numero1={counterUni}
+				numero2={counterDec}
+				numero3={counterCen}
+				numer4={counterUniM}
+				numero5={counterDecM}
+				numero6={counterCenM}
+			/>
 		</div>
 	);
 };
