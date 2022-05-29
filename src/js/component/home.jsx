@@ -5,6 +5,7 @@ import Counter from "./Counter.jsx";
 import rigoImage from "../../img/rigo-baby.jpg";
 import { useState, useEffect } from "react";
 import { func } from "prop-types";
+import Clock from "../component/Clock.jsx";
 //create your first componentrSec
 const Home = () => {
 	const [counterUni, setcounterUni] = useState(0);
@@ -45,10 +46,11 @@ const Home = () => {
 				numero1={counterUni}
 				numero2={counterDec}
 				numero3={counterCen}
-				numer4={counterUniM}
+				numero4={counterUniM}
 				numero5={counterDecM}
 				numero6={counterCenM}
 			/>
+			<Clock></Clock>
 		</div>
 	);
 };
